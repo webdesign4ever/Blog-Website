@@ -25,11 +25,30 @@ addEventOnElements(navTogglers, "click", toggleNav);
 
 const header = document.querySelector("[data-header]");
 
-window.addEventListener("scroll", () =>{
-    if(window.scrollY >100){
-        header.classList.add("active");
-    }
-    else{
-        header.classList.remove("active");
-     }
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+  } else {
+    header.classList.remove("active");
+  }
 });
+
+/**
+ * SLIDER
+ */
+
+const slider = document.querySelector("[data-slider]");
+const sliderContainer = document.querySelector("[data-slider-container]");
+const sliderPrevBtn = document.querySelector("[data-slider-prev]");
+const sliderNextBtn = document.querySelector("[data-slider-next]");
+
+let totalSliderVisibleItems=Number(getComputedStyle(slider).getPropertyValue("--slider-items"));
+
+let totalSlideableItems=sliderContainer.childElementCount-totalSliderVisibleItems;
+
+let currentSlidePos=0;
+
+const moveSliderItem =function(){
+sliderContainer.style.transform='translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)';
+}
+
