@@ -49,6 +49,53 @@ let totalSlideableItems=sliderContainer.childElementCount-totalSliderVisibleItem
 let currentSlidePos=0;
 
 const moveSliderItem =function(){
-sliderContainer.style.transform='translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)';
+sliderContainer.style.transform=`translateX(-${sliderContainer.children[currentSlidePos].offsetLeft}px)`;
 }
 
+/**
+ * NEXT SLIDE
+ */
+
+const slideNext=function(){
+  const slideEnd=currentSlidePos >= totalSlideableItems;
+  if(slideEnd){
+    currentSlidePos=0;
+  }
+  else{
+    currentSlidePos++;
+  }
+
+  moveSliderItem();
+}
+
+sliderNextBtn.addEventListener("click",slideNext);
+
+/**
+ * PREVIOUS SLIDE
+ */
+
+const slidePrev=function(){
+  if(currentSlidePos <= 0){
+    currentSlidePos=totalSlideableItems;
+  }
+  else{
+    currentSlidePos--;
+  }
+
+  moveSliderItem();
+}
+
+sliderPrevBtn.addEventListener("click",slidePrev);
+
+/**
+ * RESPONSIVE
+ */
+
+window.addEventListener("resize",function(){
+
+   totalSliderVisibleItems=Number(getComputedStyle(slider).getPropertyValue("--slider-items"));
+
+ totalSlideableItems=sliderContainer.childElementCount-totalSliderVisibleItems;
+
+ moveSliderItem();
+});
