@@ -348,6 +348,7 @@ body.nav-active {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   padding-block: 24px;
   background-color: var(--bg-oxford-blue-2);
   z-index: 4;
@@ -467,7 +468,7 @@ body.nav-active {
 }
 
 .hero {
-  padding-block-start: calc(var(--section-padding)+160px);
+  padding-block-start: calc(var(--section-padding) + 160px);
 }
 
 .hero .container {
@@ -1151,7 +1152,7 @@ body.nav-active {
   }
 
   /**
-   * FEATURED
+   * FEATURE
   */
 
   .feature {
@@ -1242,7 +1243,7 @@ body.nav-active {
   */
 
   .hero {
-    padding-block-start: calc(var (--section-padding) +80px);
+    padding-block-start: calc(var(--section-padding) + 80px);
   }
 
   .hero .container {
